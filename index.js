@@ -1,6 +1,7 @@
 import { keyInSelect } from "readline-sync";
 import { tasks } from "./tasks.js";
 import { addNewTask, showAll } from "./functions.js";
+import { randomQuote } from "./quotes.js";
 
 function toDoList() {
   const options = [
@@ -28,9 +29,9 @@ function toDoList() {
       break;
 
     default:
-      console.log(
-        "Vielen Dank, dass Sie diese App getestet haben.\n\tBis zum nächsten Mal!",
-      );
+      console.log("Vielen Dank, dass Sie diese App getestet haben.");
+      randomQuote();
+      console.log("Bis zum nächsten Mal!");
       break;
   }
   answer === -1 ? process.exit(0) : toDoList();

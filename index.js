@@ -1,6 +1,6 @@
 import { keyInSelect } from "readline-sync";
 import { tasks } from "./tasks.js";
-import { addNewTask, showAll } from "./functions.js";
+import { showAll, addNewTask, completeTask, removeTask } from "./functions.js";
 import { randomQuote } from "./quotes.js";
 
 function toDoList() {

@@ -8,8 +8,11 @@ function addNewTask() {
         datum: question('Datum: ')
     }
 
-  //  allPeople.push(newObj);
   tasks.push(newObj);
 }
 addNewTask();
-console.log(tasks);
+
+function showAll() {
+  console.log(tasks);
+}
+showAll();

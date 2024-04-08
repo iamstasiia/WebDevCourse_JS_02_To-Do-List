@@ -12,6 +12,7 @@ function toDoList() {
 
   const answer = keyInSelect(options, "Die Option wählen >>> ");
   console.clear();
+
   switch (answer) {
     case 0:
       showAll();
@@ -21,6 +22,9 @@ function toDoList() {
       break;
     case 2:
       completeTask();
+      break;
+    case 3:
+      removeTask();
       break;
 
     default:

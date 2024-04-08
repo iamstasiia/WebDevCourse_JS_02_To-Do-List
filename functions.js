@@ -1,18 +1,15 @@
-
 import { question } from "readline-sync";
-import { tasks} from "./tasks.js";
+import { tasks } from "./tasks.js";
 
-function addNewTask() {
-    const newObj = {
-        task: question('Aufgabe: '),
-        datum: question('Datum: ')
-    }
+export function addNewTask() {
+  const newObj = {
+    task: question("Aufgabe: "),
+    datum: question("Datum: "),
+  };
 
   tasks.push(newObj);
 }
-addNewTask();
 
-function showAll() {
+export function showAll() {
   console.log(tasks);
 }
-showAll();

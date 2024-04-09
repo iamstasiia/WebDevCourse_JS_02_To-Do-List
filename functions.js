@@ -10,16 +10,6 @@ export function showAll() {
   }
 }
 
-export function addNewTask() {
-  const newObj = {
-    task: question("Aufgabe: "),
-    deadline: question("Deadline: "),
-    complete: false,
-  };
-
-  tasks.push(newObj);
-}
-
 export function completeTask() {}
 
 export function removeTask() {}

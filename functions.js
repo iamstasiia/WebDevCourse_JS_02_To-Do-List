@@ -1,8 +1,8 @@
 import { question } from "readline-sync";
-import { tasks } from "./tasks.js";
+import { tasks, completedTasks } from "./tasks.js";
 
 export function showAll() {
-  console.log("\nAlle unerledigten Aufgaben: Aufgaben:");
+  console.log("\nAlle unerledigten Aufgaben:");
   for (let i = 0; i < tasks.length; i++) {
     console.log(
       `${i + 1}. ${tasks[i].task} (bis zum Ende ${tasks[i].deadline})`,
@@ -12,11 +12,13 @@ export function showAll() {
 
 export function completeTask() {
   showAll();
-  const answer = question(
-    "\nGeben Sie die Nummer der erledigten Aufgabe ein >>> ",
-  );
+  const answer =
+    question("\nGeben Sie die Nummer der erledigten Aufgabe ein >>> ") - 1;
 
-  tasks[answer - 1].complete = true;
+  tasks[answer].complete = true;
+  completedTasks.push(tasks[answer]);
+  tasks.splice(answer, 1);
+
   console.log("\nGlückwunsch! Sehr gut! Weiter so!");
 }
 

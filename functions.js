@@ -2,10 +2,10 @@ import { question } from "readline-sync";
 import { tasks } from "./tasks.js";
 
 export function showAll() {
-  // console.log(tasks);
-  // Alle Aufgaben:
-  // 1. Beenden Sie das Programm bis Ende 09/04/2024
-  // 2. Machen Sie eine erfolgreiche Präsentation bis Ende 10/04/2024
+  console.log("\nAlle Aufgaben:");
+  for (let i = 0; i < tasks.length; i++) {
+    console.log(`${i + 1}. ${tasks[i].task} (bis zum Ende ${tasks[i].deadline})`);
+  }
 }
 
 export function addNewTask() {

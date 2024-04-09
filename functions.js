@@ -8,7 +8,8 @@ export function showAll() {
 export function addNewTask() {
   const newObj = {
     task: question("Aufgabe: "),
-    datum: question("Datum: "),
+    deadline: question("Deadline: "),
+    complete: false,
   };
 
   tasks.push(newObj);

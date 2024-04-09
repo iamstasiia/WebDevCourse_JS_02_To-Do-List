@@ -1,4 +1,4 @@
-let quotes = [
+const quotes = [
   {
     quote:
       "Um Erfolg zu haben, muss man wie ein Kranker arbeiten, der überleben möchte. Es gibt keinen anderen Weg.",
@@ -52,7 +52,7 @@ let quotes = [
 ];
 
 export function randomQuote() {
-  let randomIndex = Math.floor(Math.random() * quotes.length);
+  const randomIndex = Math.floor(Math.random() * quotes.length);
   const { quote, author } = quotes[randomIndex];
   console.log(
     `\nUnd zum Schluss möchte ${author} Ihnen sagen:\n\t"${quote}"\n`,

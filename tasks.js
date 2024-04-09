@@ -10,3 +10,5 @@ export const tasks = [
     complete: false,
   },
 ];
+
+export const completedTasks = [];

@@ -15,12 +15,12 @@ export function addNewTask() {
 
 function dateChoice() {
   let currentDate = new Date();
-  console.log();
+  console.log("\nDeadline-Datum: ");
   const options = ["Heute", "Morgen", "Datum eingeben"];
   for (let i = 0; i < options.length; i++) {
     console.log(`[${i + 1}] ${options[i]}`);
   }
-  const answer = question("\nWählen Sie ein Datum >>> ");
+  const answer = question("\nWählen Sie eine Option >>> ");
 
   if (answer === "1") {
     const month = ("0" + (currentDate.getMonth() + 1)).slice(-2);

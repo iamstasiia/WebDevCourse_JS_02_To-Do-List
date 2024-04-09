@@ -2,7 +2,7 @@ import { question } from "readline-sync";
 import { tasks } from "./tasks.js";
 
 export function showAll() {
-  console.log("\nAlle Aufgaben:");
+  console.log("\nAlle unerledigten Aufgaben: Aufgaben:");
   for (let i = 0; i < tasks.length; i++) {
     console.log(
       `${i + 1}. ${tasks[i].task} (bis zum Ende ${tasks[i].deadline})`,
@@ -10,7 +10,15 @@ export function showAll() {
   }
 }
 
-export function completeTask() {}
+export function completeTask() {
+  showAll();
+  const answer = question(
+    "\nGeben Sie die Nummer der erledigten Aufgabe ein >>> ",
+  );
+
+  tasks[answer - 1].complete = true;
+  console.log("\nGlückwunsch! Sehr gut! Weiter so!");
+}
 
 export function removeTask() {}
 
@@ -23,7 +31,8 @@ export function deadlineTasks() {
     if (
       deadlineDate.getFullYear() === currentDate.getFullYear() &&
       deadlineDate.getMonth() === currentDate.getMonth() &&
-      deadlineDate.getDate() === currentDate.getDate()
+      deadlineDate.getDate() === currentDate.getDate() &&
+      obj.complete === false
     ) {
       deadlineArray.push(obj);
     }

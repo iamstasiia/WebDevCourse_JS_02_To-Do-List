@@ -1,9 +1,17 @@
 import { keyInSelect } from "readline-sync";
 import { tasks } from "./tasks.js";
-import { showAll, addNewTask, completeTask, removeTask } from "./functions.js";
+import {
+  showAll,
+  addNewTask,
+  completeTask,
+  removeTask,
+  deadlineTasks,
+} from "./functions.js";
 import { randomQuote } from "./quotes.js";
 
 function toDoList() {
+  deadlineTasks();
+
   const options = [
     "Alle Aufgaben anzeigen",
     "Eine neue Aufgabe hinzufügen",

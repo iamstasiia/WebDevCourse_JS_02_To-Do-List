@@ -8,6 +8,8 @@ import {
 import { addNewTask } from "./addNewTask.js";
 import { randomQuote } from "./quotes.js";
 
+console.clear();
+
 function toDoList() {
   deadlineTasks();
 

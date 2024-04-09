@@ -22,7 +22,15 @@ export function completeTask() {
   console.log("\nGlückwunsch! Sehr gut! Weiter so!");
 }
 
-export function removeTask() {}
+export function removeTask() {
+  showAll();
+  const answer =
+    question("\nGeben Sie die zu löschende Aufgabennummer ein >>> ") - 1;
+
+  tasks.splice(answer, 1);
+
+  console.log("\nDie gelöschte Aufgabe wird Sie nicht mehr stören;)");
+}
 
 export function deadlineTasks() {
   const currentDate = new Date();

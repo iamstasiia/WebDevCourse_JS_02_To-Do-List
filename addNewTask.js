@@ -6,9 +6,13 @@ export function addNewTask() {
   let task = question("\nNeue Aufgabe:".bgWhite + " ");
 
   if (task.length === 0) {
-    return keyInYN("\nAufgabe nicht eingegeben.\nVersuchen Sie es erneut?\n")
-      ? addNewTask()
-      : toDoList();
+    if (keyInYN("\nAufgabe nicht eingegeben.\nVersuchen Sie es erneut?\n")) {
+      return addNewTask();
+    } else {
+      console.clear();
+      console.log("\nEs wurde keine neue Aufgabe hinzugefügt\n");
+      return toDoList();
+    }
   } else {
     task = task[0].toUpperCase() + task.slice(1).toLowerCase();
   }

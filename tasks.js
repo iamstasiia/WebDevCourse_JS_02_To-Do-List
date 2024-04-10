@@ -2,7 +2,7 @@ export const tasks = [
   {
     task: "Beenden Sie das Programm",
     deadline: "2024-04-09",
-    complete: true,
+    complete: false,
   },
   {
     task: "Machen Sie eine erfolgreiche Präsentation",

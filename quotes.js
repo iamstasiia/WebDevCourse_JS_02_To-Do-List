@@ -55,6 +55,7 @@ export function randomQuote() {
   const randomIndex = Math.floor(Math.random() * quotes.length);
   const { quote, author } = quotes[randomIndex];
   console.log(
-    `\nUnd zum Schluss möchte ${author} Ihnen sagen:\n\t"${quote}"\n`,
+    `\nP.S. ${author.bgWhite.black.italic} wollte Ihnen noch etwas sagen:`,
   );
+  console.log(`\t"${quote}"\n\n\n`.italic.bold.yellow);
 }

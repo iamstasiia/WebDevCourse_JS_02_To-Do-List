@@ -1,26 +1,43 @@
-import { question } from "readline-sync";
+import { question, keyInYN } from "readline-sync";
 import { tasks } from "./tasks.js";
+import { toDoList } from "./index.js";
 
 export function addNewTask() {
+  let task = question("\nNeue Aufgabe:".bgWhite + " ");
+
+  if (task.length === 0) {
+    return keyInYN("\nAufgabe nicht eingegeben.\nVersuchen Sie es erneut?\n")
+      ? addNewTask()
+      : toDoList();
+  } else {
+    task = task[0].toUpperCase() + task.slice(1).toLowerCase();
+  }
+
+  let deadline = dateChoice();
+
   const newObj = {
-    task: question("\nAufgabe: "),
-    deadline: dateChoice(),
+    task: task,
+    deadline: deadline,
     complete: false,
   };
 
-  console.log(`\nSie haben eine neue Aufgabe:\n* ${newObj.task}`);
-
   tasks.push(newObj);
+  console.clear();
+  console.log(
+    `\nSie haben eine neue Aufgabe hinzugefügt:\n\t* ${newObj.task}\n`,
+  );
 }
 
 function dateChoice() {
   let currentDate = new Date();
-  console.log("\nDeadline-Datum: ");
+  console.log("\nDeadline-Datum:".bgWhite);
   const options = ["Heute", "Morgen", "Datum eingeben"];
   for (let i = 0; i < options.length; i++) {
     console.log(`[${i + 1}] ${options[i]}`);
   }
-  const answer = question("\nWählen Sie eine Option >>> ");
+  const answer = question(
+    "\nWählen Sie eine Option >>> ".bgGreen.black + " [1...3]: ",
+  );
 
   if (answer === "1") {
     const month = ("0" + (currentDate.getMonth() + 1)).slice(-2);
@@ -32,9 +49,25 @@ function dateChoice() {
     const day = ("0" + currentDate.getDate()).slice(-2);
     return `${currentDate.getFullYear()}-${month}-${day}`;
   } else if (answer === "3") {
-    return question(
-      "\nGeben Sie das Datum in diesem Format ein\nJahr-Monat-Tag: ",
+    const inputDate = question(
+      "\nGeben Sie das Datum in diesem Format ein\nJJJJ-MM-TT: ",
     );
+    const regex = /^\d{4}-\d{2}-\d{2}$/;
+    if (regex.test(inputDate)) {
+      return inputDate;
+    } else {
+      if (
+        keyInYN(
+          "\nDas eingegebene Datum hat nicht das richtige Format (JJJJ-MM-TT).\nVersuchen Sie es erneut?\n",
+        )
+      ) {
+        return dateChoice();
+      } else {
+        console.clear();
+        console.log("\nEs wurde keine neue Aufgabe hinzugefügt\n");
+        return toDoList();
+      }
+    }
   } else {
     console.log("\nFalsche Wahl. Versuchen Sie es erneut.");
     return dateChoice();

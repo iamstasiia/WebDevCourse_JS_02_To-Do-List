@@ -1,4 +1,6 @@
-import { keyInSelect } from "readline-sync";
+import { keyInSelect, question } from "readline-sync";
+import colors from "colors";
+
 import {
   showAll,
   completeTask,
@@ -10,9 +12,24 @@ import { randomQuote } from "./quotes.js";
 
 console.clear();
 
-function toDoList() {
+let userName = question("Ihr Name: ");
+console.clear();
+
+if (userName.length !== 0) {
+  userName = userName[0].toUpperCase() + userName.slice(1).toLowerCase();
+  console.log(
+    "\n\tHello hello hello".rainbow.bold,
+    "World".rainbow.dim.strikethrough,
+    userName.rainbow.bold + "!\n".rainbow,
+  );
+} else {
+  console.log("\n\tHello hello hello World!".rainbow.bold);
+}
+
+export function toDoList() {
   deadlineTasks();
 
+  console.log("\n\nWas machen wir als nächstes?".bgYellow.black);
   const options = [
     "Alle Aufgaben anzeigen",
     "Eine neue Aufgabe hinzufügen",
@@ -20,7 +37,7 @@ function toDoList() {
     "Die Aufgabe löschen",
   ];
 
-  const answer = keyInSelect(options, "Die Option wählen >>> ");
+  const answer = keyInSelect(options, "Die Option wählen >>> ".bgGreen.black);
   console.clear();
 
   switch (answer) {
@@ -28,6 +45,7 @@ function toDoList() {
       showAll();
       break;
     case 1:
+      console.log("\nEine neue Aufgabe hinzufügen".bold.yellow);
       addNewTask();
       break;
     case 2:
@@ -38,9 +56,9 @@ function toDoList() {
       break;
 
     default:
-      console.log("Vielen Dank, dass Sie diese App getestet haben.");
+      console.log("\nVielen Dank, dass Sie diese App getestet haben.");
+      console.log("\tBis zum nächsten Mal!\n".bold.blue);
       randomQuote();
-      console.log("Bis zum nächsten Mal!");
       break;
   }
   answer === -1 ? process.exit(0) : toDoList();
